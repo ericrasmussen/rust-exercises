@@ -1,0 +1,10 @@
+[package]
+name = "exercises"
+version = "0.1.0"
+authors = ["Eric Rasmussen <erasmussen@cars.com>"]
+edition = "2018"
+
+[[bin]]
+name = "exercises"
+
+[dependencies]
