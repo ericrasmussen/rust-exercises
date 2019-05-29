@@ -11,11 +11,11 @@ git clone git@github.com:ericrasmussen/rustexercises.git
 cd rustexercises
 ```
 
-# should show at least some test success or failures
+### run the tests
 
 `cargo test`
 
-# should output the results of the exercise functions
+### run the `main` function
 
 `cargo run`
 
