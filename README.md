@@ -2,13 +2,13 @@
 
 ## Installation
 
-See https://doc.rust-lang.org/book/ch01-01-installation.html
+See https://rustup.rs
 
 ## Setup
 
 ```
-git clone git@github.com:ericrasmussen/rustexercises.git
-cd rustexercises
+git clone https://github.com/ericrasmussen/rust-exercises
+cd rust-exercises
 ```
 
 ### add your code!
@@ -22,4 +22,3 @@ cd rustexercises
 ### run the `main` function
 
 `cargo run`
-
