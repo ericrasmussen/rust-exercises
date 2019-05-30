@@ -13,11 +13,11 @@ cd rust-exercises
 
 ### add your code!
 
-`$EDITOR src/exercises1.rs`
+`$EDITOR problems/problem1/src/lib.rs`
 
 ### run the tests
 
-`cargo test`
+`cargo test --all`
 
 ### run the `main` function
 
