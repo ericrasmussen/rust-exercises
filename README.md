@@ -22,4 +22,3 @@ cd rustexercises
 ### run the `main` function
 
 `cargo run`
-
