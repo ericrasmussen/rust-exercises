@@ -7,7 +7,7 @@ See https://doc.rust-lang.org/book/ch01-01-installation.html
 ## Setup
 
 ```
-git clone git@github.com:ericrasmussen/rustexercises.git
+git clone https://github.com/ericrasmussen/rust-exercises
 cd rust-exercises
 ```
 
