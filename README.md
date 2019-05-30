@@ -8,7 +8,7 @@ See https://doc.rust-lang.org/book/ch01-01-installation.html
 
 ```
 git clone git@github.com:ericrasmussen/rustexercises.git
-cd rustexercises
+cd rust-exercises
 ```
 
 ### add your code!
