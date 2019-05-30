@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "belfz.search-crates-io",
+    "bungcip.better-toml",
+    "cargo-inspect-vscode.cargo-inspect",
+    "editorconfig.editorconfig",
+    "github.vscode-pull-request-github",
+    "ms-vscode.github-issues-prs",
+    "panicbit.cargo",
+    "rust-lang.rust",
+    "serayuzgur.crates",
+    "visualstudioexptteam.vscodeintellicode"
+  ]
+}
