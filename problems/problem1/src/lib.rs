@@ -6,7 +6,6 @@ pub fn find_largest_element(elems: &Vec<i64>) -> Option<i64> {
 
 }
 
-
 #[cfg(test)]
 mod test {
     use super::*;
@@ -27,5 +26,14 @@ mod test {
         let result = find_largest_element(&myvec);
 
         assert_eq!(result, Some(8));
+    }
+
+    #[test]
+    fn test_negative_elements() {
+        let myvec = vec![-1, -5, -3, -8];
+
+        let result = find_largest_element(&myvec);
+
+        assert_eq!(result, Some(-1));
     }
 }
