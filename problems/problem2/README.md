@@ -2,7 +2,7 @@
 
 `problem2` has two main components:
 
-## libr.rs
+## lib.rs
 
 The library part of our program contains a broken function named `sum_one_to_n`,
 which should take any `u32` value `n` and return the sum of 1 to n (inclusive).
