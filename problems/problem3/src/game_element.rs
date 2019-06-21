@@ -26,24 +26,31 @@ pub enum GameElement {
 ///```
 impl Ord for GameElement {
 
+    /// FIX ME!
+    /// This allows users to compare Rock, Paper, and Scissors by defining
+    /// the relationships between the three elements. e.g. Rock == Rock
+    /// and Paper < Scissors.
     fn cmp(&self, other: &Self) -> Ordering {
 
         use GameElement::*;
         use Ordering::*;
 
-        if self == other {
-            return Ordering::Equal;
-        }
-
+        // This one is tricky. What are all the cases we need to cover? Do we have
+        // tests for all the cases? The broken function below returns Less
+        // for Rock compared to Paper (meaning `Rock < Paper == true`), but we
+        // need to cover all cases.
         match (self, other) {
-            (Rock, Paper)     => Less,
-            (Paper, Scissors) => Less,
-            (Scissors, Rock)  => Less,
-            _ => Ordering::Greater,
+            (Rock, Paper) => Less,
+            _             => Greater,
         }
     }
 }
 
+/// `Ord` requires that `PartialOrd` is implemented. `PartialOrd` returns
+/// `Option<Ordering>` because some data types have values that cannot be
+/// compared. Since `GameElement` should allow for all of its variants to be
+/// compared, we can define the partial ordering via the `cmp` method from
+/// `Ord`.
 impl PartialOrd for GameElement {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         Some(self.cmp(other))
@@ -69,12 +76,19 @@ impl Distribution<GameElement> for Standard {
 
 /// Console-friendly string representation of each element.
 impl fmt::Display for GameElement {
+
+    /// FIX ME!
+    /// This displays a user friendly string representation of all three
+    /// `GameElement` variants.
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let printable_str = match self {
-            GameElement::Rock     => "Rock".to_string(),
-            GameElement::Paper    => "Paper".to_string(),
-            GameElement::Scissors => "Scissors".to_string(),
-        };
+
+        // Right now this always returns "Rock" no matter what element
+        // we have. You can use `self` (an instance of `GameElement`) to
+        // fix up our printer.
+        let printable_str = "Rock";
+
+        // The last line calls `write!` with the given formatter. You do not
+        // need to modify it.
         write!(f, "{}", printable_str)
     }
 }
@@ -84,13 +98,12 @@ impl fmt::Display for GameElement {
 impl FromStr for GameElement {
     type Err = SimpleError;
 
+    /// FIX ME!
+    /// Takes a string slice as input and either parses it into a `GameElement`
+    /// or returns an error.
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        if s.starts_with("r") {
+        if s == "r\n" {
             Ok(GameElement::Rock)
-        } else if s.starts_with("p") {
-            Ok(GameElement::Paper)
-        } else if s.starts_with("s") {
-            Ok(GameElement::Scissors)
         } else {
             Err(SimpleError::new("Choice must start with r, p, or s"))
         }
@@ -106,6 +119,7 @@ mod test {
     fn test_ordering() {
         use GameElement::*;
 
+        // does this test everything we need?
         assert!(Rock < Paper && Paper < Scissors && Scissors < Rock);
     }
 

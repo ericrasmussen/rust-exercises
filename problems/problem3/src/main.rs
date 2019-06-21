@@ -3,6 +3,8 @@ use problem3::game_element::GameElement;
 use problem3::game::Game;
 
 
+// Console-based rock/paper/scissors game. Make sure to fix the broken
+// code in `game_element.rs`.
 fn main() {
     println!("Let's play rock paper scissors!");
 
@@ -26,7 +28,6 @@ fn main() {
 
         // plays one round of the game and prints results
         game.play(choice);
-
         println!("Results: {:?}", game);
         println!("");
 
