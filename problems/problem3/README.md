@@ -53,6 +53,19 @@ to compile, which means the compiler knows unambiguously where each type or
 trait comes from.
 
 
+## Running the game
+
+You can try the program out any time with:
+
+```
+cargo run --package problem3
+```
+
+But remember that it will behave oddly before you fix the code.
+
+The game can be exited by pressing Ctrl+C (or closing the terminal window).
+
+
 ## Docs relevant to this problem
 
 * https://doc.rust-lang.org/book/ch03-00-common-programming-concepts.html
