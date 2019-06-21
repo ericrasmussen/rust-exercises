@@ -11,6 +11,7 @@ name = "exercises"
 members = [
   "problems/problem1",
   "problems/problem2",
+  "problems/problem3",
 ]
 
 [dependencies]

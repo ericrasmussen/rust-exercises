@@ -1,0 +1,9 @@
+[package]
+name = "problem3"
+version = "0.1.0"
+authors = ["Eric Rasmussen <ericrasmussen@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+rand = "0.6.5"
+simple-error = "0.2.0"
