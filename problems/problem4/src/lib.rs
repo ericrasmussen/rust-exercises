@@ -16,24 +16,6 @@ pub fn make_flower_box(elems: Vec<&str>) -> String {
 
     let mut flower_box = String::new();
 
-    // no need to push newlines or empty borders if
-    // we have no elements
-    if elems.is_empty() {
-        return flower_box;
-    }
-
-    let max_length = get_max_line_length(&elems);
-
-    let box_width = max_length + 4;
-
-    let border = format_border("*", box_width);
-
-    let lines: String = elems.iter().map(|&s| format_line(s, max_length)).collect();
-
-    flower_box.push_str(&border);
-    flower_box.push_str(&lines);
-    flower_box.push_str(&border);
-
     flower_box
 
 }
@@ -48,10 +30,7 @@ pub fn make_flower_box(elems: Vec<&str>) -> String {
 /// assert_eq!(actual, expected)
 /// ```
 pub fn format_line(s: &str, max_length: usize) -> String {
-    let spaces = str::repeat(" ", max_length - s.len());
-
-    format!("* {}{} *\n", s, spaces)
-
+    String::from("* *")
 }
 
 /// Creates a border that can be used at the top and bottom
@@ -65,8 +44,7 @@ pub fn format_line(s: &str, max_length: usize) -> String {
 /// assert_eq!(actual, expected)
 /// ```
 pub fn format_border(s: &str, length: usize) -> String {
-    let s = str::repeat(s, length);
-    format!("{}\n", s)
+    String::from("******\n")
 }
 
 /// Gets the longest line length from `elems`.
@@ -78,7 +56,7 @@ pub fn format_border(s: &str, length: usize) -> String {
 /// assert_eq!(get_max_line_length(&elems), 8);
 /// ```
 pub fn get_max_line_length(elems: &Vec<&str>) -> usize {
-    elems.iter().fold(0, |best, next| cmp::max(best, next.len()))
+    5
 }
 
 #[cfg(test)]
