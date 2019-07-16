@@ -41,7 +41,12 @@ impl Ord for GameElement {
         // need to cover all cases.
         match (self, other) {
             (Rock, Paper) => Less,
-            _             => Greater,
+            (Rock, Scissors) => Greater,
+            (Paper, Scissors) => Less,
+            (Paper, Rock) => Greater,
+            (Scissors, Rock) => Less,
+            (Scissors, Paper) => Greater,
+            _             => Equal,
         }
     }
 }
@@ -77,15 +82,17 @@ impl Distribution<GameElement> for Standard {
 /// Console-friendly string representation of each element.
 impl fmt::Display for GameElement {
 
-    /// FIX ME!
     /// This displays a user friendly string representation of all three
     /// `GameElement` variants.
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
 
-        // Right now this always returns "Rock" no matter what element
-        // we have. You can use `self` (an instance of `GameElement`) to
-        // fix up our printer.
-        let printable_str = "Rock";
+        let printable_str = if self == &GameElement::Rock {
+            "Rock"
+        } else if self == &GameElement::Paper {
+            "Paper"
+        } else {
+            "Scissors"
+        };
 
         // The last line calls `write!` with the given formatter. You do not
         // need to modify it.
@@ -98,12 +105,15 @@ impl fmt::Display for GameElement {
 impl FromStr for GameElement {
     type Err = SimpleError;
 
-    /// FIX ME!
     /// Takes a string slice as input and either parses it into a `GameElement`
     /// or returns an error.
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         if s == "r\n" {
             Ok(GameElement::Rock)
+        } else if s == "p\n" {
+            Ok(GameElement::Paper)
+        } else if s == "s\n" {
+            Ok(GameElement::Scissors)
         } else {
             Err(SimpleError::new("Choice must start with r, p, or s"))
         }
@@ -120,7 +130,7 @@ mod test {
         use GameElement::*;
 
         // does this test everything we need?
-        assert!(Rock < Paper && Paper < Scissors && Scissors < Rock);
+        assert!(Rock < Paper && Paper < Scissors && Scissors < Rock && Rock == Rock && Paper == Paper && Scissors == Scissors);
     }
 
     // add additional tests to make sure we can parse game elements from
