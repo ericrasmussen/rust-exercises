@@ -14,10 +14,24 @@ use std::str;
 ///
 pub fn make_flower_box(elems: Vec<&str>) -> String {
 
+    let max_length = get_max_line_length(&elems);
+    if max_length == 0 {
+        return String::from("");
+    }
+
     let mut flower_box = String::new();
 
-    flower_box
+    // create border adding padding for the sides
+    let border = format_border("*", max_length + 4);
+    flower_box.push_str(&border);
 
+    for e in elems {
+        flower_box.push_str(&format_line(e, max_length));
+    }
+
+    flower_box.push_str(&border);
+
+    flower_box
 }
 
 /// Creates a string with a border and space padding.
@@ -30,7 +44,28 @@ pub fn make_flower_box(elems: Vec<&str>) -> String {
 /// assert_eq!(actual, expected)
 /// ```
 pub fn format_line(s: &str, max_length: usize) -> String {
-    String::from("* *")
+    if max_length == 0 {
+        return String::from("");
+    }
+
+    let mut line: String = String::from("*");
+
+    // Add a padding space
+    line.push_str(" ");
+
+    // Add vector element
+    line.push_str(&s);
+
+    // Add spaces to equal the longest
+    for _ in s.len()..max_length + 1 {
+    //for _ in 0..max_length {
+        line.push_str(" ");
+    }
+
+    // Add ending border plus new line
+    line.push_str("*\n");
+    line
+
 }
 
 /// Creates a border that can be used at the top and bottom
@@ -44,7 +79,20 @@ pub fn format_line(s: &str, max_length: usize) -> String {
 /// assert_eq!(actual, expected)
 /// ```
 pub fn format_border(s: &str, length: usize) -> String {
-    String::from("******\n")
+    if length == 0 {
+        return String::from("");
+    }
+
+    let mut border: String = String::from("");
+
+    // create border using the character that was passed in
+    for _ in 0..length {
+        border.push_str(s);
+    }
+
+    // Add newline
+    border.push_str("\n");
+    border
 }
 
 /// Gets the longest line length from `elems`.
@@ -56,7 +104,18 @@ pub fn format_border(s: &str, length: usize) -> String {
 /// assert_eq!(get_max_line_length(&elems), 8);
 /// ```
 pub fn get_max_line_length(elems: &Vec<&str>) -> usize {
-    5
+    if elems.len() == 0 {
+        return 0;
+    }
+
+    // loop through vector to find the maximum length
+    let mut max_length = 0;
+    for e in elems {
+        if e.len() > max_length {
+            max_length = e.len();
+        }
+    }
+    max_length
 }
 
 #[cfg(test)]
