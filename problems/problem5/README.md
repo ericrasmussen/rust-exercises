@@ -23,9 +23,9 @@ initialized with a principal and interest rate:
 1. Write a test for the compound interest formula, which calculates 
    the new principal after a month has passed.
 2. Calculate the balance remaining on the loan after _n_ months.
-3. Let's say you want to use the maximum amount of time (`Mortgage.loan_term_months`)
-to pay off the loan. Calculate the minimum monthly payment required 
-to meet this goal.
+3. Let's say you want to use the maximum amount of time 
+(`Mortgage.loan_term_months`) to pay off the loan. Calculate the 
+minimum monthly payment required to meet this goal.
 4. Calculate the total amount you've paid (payments + interest) 
 toward the loan after _n_ months.
 5. Given an alternative monthly payment of _M_ dollars (let's say you
@@ -35,9 +35,13 @@ amount of time needed to pay off the loan in full.
 ## lib.rs
 
 The method definitions are all empty, but there are tests for
-checking your solutions. Note that the test for #4 may fail due to
-slight rounding errors: if you are off the expected value by less 
-than $100, consider your solution more or less correct. 
+checking your solutions. 
+
+**Note** the test for #4, `test_mortgage_total_payout`, may fail 
+due to slight rounding errors: if your resulting total payout is
+off the expected value by less than $100, consider your solution 
+more or less correct. (Then again, it's entirely possible that my
+solution is wrong :P)
 
 Run `cargo test --package problem5` to run the tests.
 
