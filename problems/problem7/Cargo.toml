@@ -1,0 +1,7 @@
+[package]
+name = "problem7"
+version = "0.1.0"
+authors = ["Eric Rasmussen <ericrasmussen@gmail.com>"]
+edition = "2018"
+
+[dependencies]
