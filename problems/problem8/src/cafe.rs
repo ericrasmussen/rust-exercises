@@ -31,37 +31,7 @@ impl Cafe {
     /// for hints) and `self.handle_msg` (check the comments for another hint).
     pub fn run_simulation(mut self) {
 
-        let (sender, receiver) = mpsc::channel();
-
-        // this solution uses pop to modify the visitors vector in place. we can
-        // stop looping when that vector is empty, because at that point we
-        // don't need to create any more threads.
-        while !self.visitors.is_empty() {
-
-            if self.available_computers > 0 {
-                let visitor = self.visitors.pop().unwrap();
-                let message_sender = mpsc::Sender::clone(&sender);
-                self.allocate_computer(visitor, message_sender);
-            }
-
-            // while we're handling all incoming visitors, some visitors will
-            // let us know they're all done. it's important to handle these
-            // incoming message as part of our loop.
-            if let Ok(m) = receiver.try_recv() {
-                self.handle_msg(m.to_string());
-            }
-        }
-
-        // once our loop is finished, we do not need to send more messages.
-        // this closes the sending/transmitting half of our channel.
-        drop(sender);
-
-        // now that the sender is dropped, we can receive all of the remaining
-        // messages
-        for msg in receiver {
-            &self.handle_msg(msg.to_string());
-        }
-
+        println!("There's no simulation here yet... good luck!");
     }
 
     /// Here we need to go through all the steps of announcing a visitor, giving
@@ -70,17 +40,7 @@ impl Cafe {
     /// all done. Check `visitor.rs` to see what methods you have available to
     /// you.
     fn allocate_computer(&mut self, v: Visitor, sender: mpsc::Sender<String>) {
-        println!("{}", &v.visit_start());
-
-        let msg = v.visit_summary();
-
-        thread::spawn(move || {
-            v.visit();
-            sender.send(msg).unwrap();
-        });
-
-        self.available_computers -= 1;
-
+        println!("Fix me! I'm not allocating anything right now.");
     }
 
     /// We have to be prepared to receive messages at different times (while
