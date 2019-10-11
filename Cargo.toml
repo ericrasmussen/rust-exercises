@@ -15,7 +15,8 @@ members = [
   "problems/problem4",
   "problems/problem5",
   "problems/problem6",
-  "problems/problem7"
+  "problems/problem7",
+  "problems/problem8"
 ]
 
 [dependencies]
