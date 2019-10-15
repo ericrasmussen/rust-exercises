@@ -25,10 +25,11 @@ impl Cafe {
         }
     }
 
-    /// This function should create our message channel and launch one thread
-    /// per visit as long as there is an available computer.
-    /// It should make use of `self.allocate_computer` (check its type signature
-    /// for hints) and `self.handle_msg` (check the comments for another hint).
+    /// This function should create our message channel, decide when there
+    /// is a visitor and a free computer, then make use of
+    /// `self.allocate_computer` (check its type signature for hints).
+    /// It will also need to use `self.handle_msg` in two places (check its
+    /// comments for another hint).
     pub fn run_simulation(mut self) {
 
         println!("There's no simulation here yet... good luck!");
